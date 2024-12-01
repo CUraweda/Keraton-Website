@@ -10,7 +10,7 @@
 
 const { configure } = require("quasar/wrappers");
 
-module.exports = configure(function (/* ctx */) {
+module.exports = configure(function (ctx) {
   return {
     eslint: {
       // fix: true,
@@ -81,6 +81,7 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       // https: true
       host: "localhost",
+      port: ctx.mode.spa ? 8000 : ctx.mode.pwa ? 9000 : 9090,
       open: true, // opens browser window automatically
     },
 
