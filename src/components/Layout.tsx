@@ -15,7 +15,7 @@ const Layout: FC<Props> = ({ children }) => {
           <Navbar />
         </div>
         <div>{children}</div>
-        <div>
+        <div className="bottom-0  z-50">
           <Footer />
         </div>
       </div>
