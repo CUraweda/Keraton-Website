@@ -11,7 +11,7 @@ const Layout: FC<Props> = ({ children }) => {
   return (
     <>
       <div className="w-full min-h-screen flex flex-col" data-theme="light">
-        <div className="top-0 sticky">
+        <div className="top-0 sticky z-50">
           <Navbar />
         </div>
         <div>{children}</div>
