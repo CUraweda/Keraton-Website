@@ -94,6 +94,7 @@
 
             <q-input
               filled
+              type="textarea"
               v-model="newsData.desc"
               label="Description"
               color="black"

@@ -13,241 +13,236 @@
 
     <div class="q-mx-md">
       <q-timeline color="orange" class="q-mt-md">
-        <q-timeline-entry heading> Sultan Sepuh I </q-timeline-entry>
-
-        <q-timeline-entry
-          title="Sultan Sepuh I, yang bernama asli Pangeran Raja Adipati Syamsuddin
-          Martawijaya, dinobatkan sebagai sultan pada tahun 1662 M."
-          subtitle="1662 M"
+        <!-- 1 -->
+        <q-timeline-entry heading
+          >SUNAN GUNUNG JATI (SYARIF HIDAYATULLAH)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1482M - 1568M">
           <div>
-            Beliau adalah putra dari Pangeran Aria Wirasaba, putra dari Pangeran
-            Cakrabuana. Sultan Sepuh I merupakan sultan pertama yang memerintah
-            Kesultanan Kasepuhan. Beliau memerintah selama 35 tahun dan wafat
-            pada tahun 1697.
+            Sunan Gunung Jati atau Syarif Hidayatullah menjabat sebagai pemimpin
+            Kesultanan Cirebon selama 86 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh II </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh II memerintah selama 23 tahun dan wafat pada tahun 1720."
-          subtitle="1697 M"
+        <!-- 2 -->
+        <q-timeline-entry heading>SYECH SYARIF HIDAYATULLAH</q-timeline-entry>
+        <q-timeline-entry subtitle="1479M - 1482M">
+          <div>
+            Syech Syarif Hidayatullah memerintah Kesultanan Cirebon selama 3
+            tahun yaitu pada tahun 1479M sampai 1482M.
+          </div>
+        </q-timeline-entry>
+
+        <!-- 3 -->
+        <q-timeline-entry heading
+          >P.ADIPATI PASAREAN (P.MUHAMMAD ARIFIN)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1495M - 1552M">
           <div>
-            Sultan Sepuh II, yang bernama asli Pangeran Raja Adipati Muhammad
-            Arifin, dinobatkan sebagai sultan pada tahun 1697. Beliau adalah
-            putra dari Sultan Sepuh I.
+            Pangeran Adipati Pasarean yang bernama asli Pangeran Muhammad Arifin
+            menjalani kehidupan dari tahun 1495M hingga 1552M.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh III </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh III memerintah selama 30 tahun dan wafat pada tahun 1750."
-          subtitle="1720 M"
+        <!-- 4 -->
+        <q-timeline-entry heading
+          >P.ADIPATI CARBON I (P.SEDANG KAMUNING)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1520M - 1533M">
           <div>
-            Sultan Sepuh III, yang bernama asli Pangeran Raja Adipati Abdul
-            Jalil, dinobatkan sebagai sultan pada tahun 1720. Beliau adalah
-            putra dari Sultan Sepuh II.
+            Pangeran Adipati Carbon I atau yang dikenal sebagai Pangeran Sedang
+            Kamuning menjalani kehidupan dari tahun 1520M hingga 1533M.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh IV </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh IV memerintah selama 30 tahun dan wafat pada tahun 1780."
-          subtitle="1750 M"
+        <!-- 5 -->
+        <q-timeline-entry heading
+          >PANAMBAHAN RATU PAKUNGWATI I (P.EMAS ZAINUL ARIFIN)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1568M - 1649M">
           <div>
-            Sultan Sepuh IV, yang bernama asli Pangeran Raja Adipati Abdul Gani,
-            dinobatkan sebagai sultan pada tahun 1750. Beliau adalah putra dari
-            Sultan Sepuh III.
+            Panambahan Ratu Pakungwati I atau Pangeran Emas Zainul Arifin
+            menjabat sebagai pemimpin Kesultanan Cirebon selama 81 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh V </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh V memerintah selama 25 tahun dan wafat pada tahun 1805."
-          subtitle="1778 M"
+        <!-- 6 -->
+        <q-timeline-entry heading
+          >PANAMBAHAN RATU PAKUNGAWTI II (PANEMBAHAN GIRILAYA)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1649M - 1666M">
           <div>
-            Sultan Sepuh V, yang bernama asli Pangeran Raja Adipati Suryanegara,
-            dinobatkan sebagai sultan pada tahun 1780. Beliau adalah putra dari
-            Sultan Sepuh IV.
+            Panambahan Ratu Pakungwati II yang juga dikenal sebagai Panembahan
+            Girilaya menjabat sebagai pemimpin Kesultanan Cirebon selama 17
+            tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh VI </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh VI memerintah selama 20 tahun dan wafat pada tahun 1825."
-          subtitle="1784 M"
+        <!-- 7 -->
+        <q-timeline-entry heading
+          >P.SYAMSUDIN MARTAWIDJAJA (SULTAN SEPUH I)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1679M - 1697M">
           <div>
-            Sultan Sepuh VI, yang bernama asli Pangeran Raja Adipati Arifudin,
-            dinobatkan sebagai sultan pada tahun 1805. Beliau adalah putra dari
-            Sultan Sepuh V.
+            Sultan Sepuh I yang bernama Pangeran Syamsudin Martawidjaja
+            memerintah Kesultanan Cirebon selama 18 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh VII </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh VII memerintah selama 15 tahun dan wafat pada tahun 1840."
-          subtitle="1790 M"
+        <!-- 8 -->
+        <q-timeline-entry heading
+          >P.DJAMALUDIN (SULTAN SEPUH II)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1697M - 1723M">
           <div>
-            Sultan Sepuh VII, yang bernama asli Pangeran Raja Adipati
-            Syafiuddin, dinobatkan sebagai sultan pada tahun 1825. Beliau adalah
-            putra dari Sultan Sepuh VI.
+            Sultan Sepuh II yang bernama Pangeran Djamaludin memimpin Kesultanan
+            Cirebon selama 26 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh VIII </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh VIII memerintah selama 20 tahun dan wafat pada tahun 1860."
-          subtitle="1816 M"
+        <!-- 9 -->
+        <q-timeline-entry heading
+          >P.DJAENUDIN AMIR SENA I (SULTAN SEPUH III)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1723M - 1753M">
           <div>
-            Sultan Sepuh VIII, yang bernama asli Pangeran Raja Adipati
-            Zainuddin, dinobatkan sebagai sultan pada tahun 1840. Beliau adalah
-            putra dari Sultan Sepuh VII.
+            Sultan Sepuh III atau Pangeran Djaenudin Amir Sena I menjabat
+            sebagai Sultan Cirebon selama 30 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh IX </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh IX memerintah selama 25 tahun dan wafat pada tahun 1885."
-          subtitle="1845 M"
+        <!-- 10 -->
+        <q-timeline-entry heading
+          >P.DJAENUDIN AMIR SENA II (SULTAN SEPUH IV)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1753M - 1773M">
           <div>
-            Sultan Sepuh IX, yang bernama asli Pangeran Raja Adipati Abdul
-            Fattah, dinobatkan sebagai sultan pada tahun 1860. Beliau adalah
-            putra dari Sultan Sepuh VIII.
+            Sultan Sepuh IV atau Pangeran Djaenudin Amir Sena II memimpin
+            Kesultanan Cirebon selama 20 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh IX </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh IX memerintah selama 25 tahun dan wafat pada tahun 1885."
-          subtitle="1845 M"
+        <!-- 11 -->
+        <q-timeline-entry heading
+          >P.SIAFIUDIN / SULTAN MATANGAJI (SULTAN SEPUH V)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1773M - 1786M">
           <div>
-            Sultan Sepuh IX, yang bernama asli Pangeran Raja Adipati Abdul
-            Fattah, dinobatkan sebagai sultan pada tahun 1860. Beliau adalah
-            putra dari Sultan Sepuh VIII.
+            Sultan Sepuh V yang juga dikenal sebagai Sultan Matangaji atau
+            Pangeran Siafiudin memerintah Kesultanan Cirebon selama 13 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh X </q-timeline-entry>
-        <q-timeline-entry
-          title="Sultan Sepuh X memerintah selama 30 tahun dan wafat pada tahun 1915."
-          subtitle="1890 M"
+        <!-- 12 -->
+        <q-timeline-entry heading
+          >P.HASANUDDIN (SULTAN SEPUH VI)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1786M - 1791M">
           <div>
-            Sultan Sepuh X, yang bernama asli Pangeran Raja Adipati Sulaiman,
-            dinobatkan sebagai sultan pada tahun 1885. Beliau adalah putra dari
-            Sultan Sepuh IX.
+            Sultan Sepuh VI atau Pangeran Hasanuddin menjabat sebagai pemimpin
+            Kesultanan Cirebon selama 5 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh XI </q-timeline-entry>
-        <q-timeline-entry heading>
-          <q-img
-            src="../assets/images/sultan sepuh xi.png"
-            style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-        /></q-timeline-entry>
-
-        <q-timeline-entry
-          title="Sultan Sepuh XI memerintah selama 25 tahun dan wafat pada tahun 1940."
-          subtitle="1899 M"
+        <!-- 13 -->
+        <q-timeline-entry heading
+          >P.DJOHARUDIN (SULTAN SEPUH VII)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1791M - 1815M">
           <div>
-            Sultan Sepuh XI, yang bernama asli Pangeran Raja Adipati Abdul
-            Karim, dinobatkan sebagai sultan pada tahun 1915. Beliau adalah
-            putra dari Sultan Sepuh X.
+            Sultan Sepuh VII yang bernama Pangeran Djoharudin memimpin
+            Kesultanan Cirebon selama 24 tahun.
           </div>
         </q-timeline-entry>
-        <q-timeline-entry heading> Sultan Sepuh XII </q-timeline-entry>
-        <q-timeline-entry heading>
-          <q-img
-            src="../assets/images/sultan sepuh xii.jpg"
-            style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-        /></q-timeline-entry>
 
-        <q-timeline-entry
-          title="Sultan Sepuh XII memerintah selama 30 tahun dan wafat pada tahun 1970."
-          subtitle="1942 M"
+        <!-- 14 -->
+        <q-timeline-entry heading
+          >P.RADJA UDAKA (SULTAN SEPUH VIII)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1815M - 1845M">
           <div>
-            Sultan Sepuh XII, yang bernama asli Pangeran Raja Adipati Muhammad
-            Djalaluddin, dinobatkan sebagai sultan pada tahun 1940. Beliau
-            adalah putra dari Sultan Sepuh XI.
+            Sultan Sepuh VIII atau Pangeran Radja Udaka memerintah Kesultanan
+            Cirebon selama 30 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh XIII </q-timeline-entry>
-        <q-timeline-entry heading>
-          <q-img
-            src="../assets/images/sultan sepuh xiii.jpg"
-            style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-        /></q-timeline-entry>
-
-        <q-timeline-entry
-          title="Sultan Sepuh XIII memerintah selama 25 tahun dan wafat pada tahun 1995."
-          subtitle="1969 M"
+        <!-- 15 -->
+        <q-timeline-entry heading
+          >P.RADJA SULAEMAN (SULTAN SEPUH IX)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1815M - 1853M">
           <div>
-            Sultan Sepuh XIII, yang bernama asli Pangeran Raja Adipati Abdul
-            Rahman, dinobatkan sebagai sultan pada tahun 1970. Beliau adalah
-            putra dari Sultan Sepuh XII.
+            Sultan Sepuh IX yang bernama Pangeran Radja Sulaeman menjabat
+            sebagai Sultan Cirebon selama 38 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh XIV </q-timeline-entry>
-        <q-timeline-entry heading>
-          <div class="flex items-center q-gutter-md">
-            <q-img
-              src="../assets/images/sultan sepuh xiv.jpg"
-              style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-            />
-            <q-img
-              src="../assets/images/sultan sepuh xiv 2.jpg"
-              style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-            />
-          </div>
-        </q-timeline-entry>
-
-        <q-timeline-entry
-          title="Sultan Sepuh XIV memerintah selama 20 tahun dan wafat pada tahun 2015."
-          subtitle="2010 M"
+        <!-- 16 -->
+        <q-timeline-entry heading
+          >P.RADJA ATMADJA (SULTAN SEPUH X)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1880M - 1885M">
           <div>
-            Sultan Sepuh XIV, yang bernama asli Pangeran Raja Adipati Muhammad
-            Abdullah, dinobatkan sebagai sultan pada tahun 1995. Beliau adalah
-            putra dari Sultan Sepuh XIII.
+            Sultan Sepuh X atau Pangeran Radja Atmadja memimpin Kesultanan
+            Cirebon selama 5 tahun.
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry heading> Sultan Sepuh XV </q-timeline-entry>
-        <q-timeline-entry heading>
-          <div class="flex items-center q-gutter-md">
-            <q-img
-              src="../assets/images/sultan sepuh xv.jpg"
-              style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-            />
-            <q-img
-              src="../assets/images/sultan sepuh xv 2.jpg"
-              style="width: 20rem; height: 15rem; border-radius: 0.2rem"
-            />
-          </div>
-        </q-timeline-entry>
-
-        <q-timeline-entry
-          title="Sultan Sepuh XV memerintah dari tahun 2015 hingga sekarang."
-          subtitle="2020 M"
+        <!-- 17 -->
+        <q-timeline-entry heading
+          >P.RADJA ALUDA TAJUL ARIFFIN (SULTAN SEPUH XI)</q-timeline-entry
         >
+        <q-timeline-entry subtitle="1899M - 1942M">
           <div>
-            Sultan Sepuh XV, yang bernama asli Pangeran Raja Adipati Luqman
-            Zulkaedin, dinobatkan sebagai sultan pada tahun 2015. Beliau adalah
-            putra dari Sultan Sepuh XIV.
+            Sultan Sepuh XI yang bernama Pangeran Radja Aluda Tajul Ariffin
+            menjabat sebagai Sultan Cirebon selama 43 tahun.
+          </div>
+        </q-timeline-entry>
+
+        <!-- 18 -->
+        <q-timeline-entry heading
+          >P.RADJA RADJANINGRAT (SULTAN SEPUH XII)</q-timeline-entry
+        >
+        <q-timeline-entry subtitle="1942M - 1969M">
+          <div>
+            Sultan Sepuh XII atau Pangeran Radja Radjaningrat memerintah
+            Kesultanan Cirebon selama 27 tahun.
+          </div>
+        </q-timeline-entry>
+
+        <!-- 19 -->
+        <q-timeline-entry heading
+          >P.R.A.DR.H. MAULANA PAKUNINGRAT, SH (SULTAN SEPUH
+          XIII)</q-timeline-entry
+        >
+        <q-timeline-entry subtitle="1969M - 2010M">
+          <div>
+            Sultan Sepuh XIII yang bernama Pangeran Raden Adipati Dr. H. Maulana
+            Pakuningrat, SH menjabat sebagai Sultan Cirebon selama 41 tahun.
+          </div>
+        </q-timeline-entry>
+
+        <!-- 20 -->
+        <q-timeline-entry heading
+          >P.R.A ARIEF NATADININGRAT, SE (SULTAN SEPUH XIV)</q-timeline-entry
+        >
+        <q-timeline-entry subtitle="2010M - 2020M">
+          <div>
+            Sultan Sepuh XIV atau Pangeran Raden Adipati Arief Natadiningrat, SE
+            memimpin Kesultanan Cirebon selama 10 tahun.
+          </div>
+        </q-timeline-entry>
+
+        <!-- 21 -->
+        <q-timeline-entry heading
+          >P.R.A LUQMAN ZULKAEDIN, S.H., M.Kn. (SULTAN SEPUH
+          XV)</q-timeline-entry
+        >
+        <q-timeline-entry subtitle="2020M - Sekarang">
+          <div>
+            Sultan Sepuh XV yang bernama Pangeran Raden Adipati Luqman
+            Zulkaedin, S.H., M.Kn. menjabat sebagai Sultan Cirebon hingga
+            sekarang.
           </div>
         </q-timeline-entry>
       </q-timeline>
