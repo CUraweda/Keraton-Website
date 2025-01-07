@@ -115,6 +115,7 @@
         'background-size': 'cover',
         padding: '2.5rem 0',
       }"
+      v-if="this.events.length > 0"
     >
       <div>
         <div style="color: #d9a520" class="text-h5 text-center">
@@ -314,7 +315,7 @@ export default {
       slides: ref([]),
       faqs: [],
       eventImage: ref(),
-      showCounterEvent: ref(3),
+      showCounterEvent: ref(),
       showCounterSejarah: ref(3),
       events: ref([]),
       sejarahImages: ref([]),
@@ -403,6 +404,7 @@ export default {
       try {
         const response = await this.$api.post("event/page", {});
         this.events = this.shuffleArray(response.data.data);
+        this.showCounterEvent = this.events.length > 3 ? 3 : this.events.length;
         this.eventImage = this.events[0].image;
       } catch (err) {
         console.log(err);
@@ -426,7 +428,7 @@ export default {
     shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+        [array[i], array[j]] = [array[j], array[i]];
       }
       return array;
     },
