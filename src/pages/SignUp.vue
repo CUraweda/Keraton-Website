@@ -151,11 +151,10 @@ export default {
 
       try {
         const response = await this.$api.post("/auth/register", payload);
-        if (response.status != 200) throw Error(response.data.message);
+        // if (response.status != 200) throw Error(response.data.message);
 
         const { token, user } = response.data.data;
-        const cartData = Object.values(user.carts);
-        delete user.carts;
+        const cartData = user.carts ? Object.values(user.carts) : [];
 
         this.cartClass.setNew(cartData);
         cookieHandler.setCookie(env.TOKEN_STORAGE_NAME, token);
@@ -164,10 +163,10 @@ export default {
 
         this.showNotif("Anda berhasil melakukan pendaftaran", "success");
         this.$router.push("/");
-      } catch (err) {
-        console.log("Error:", err);
+      } catch (error) {
+        console.log("Error:", error);
         this.showNotif(
-          err.response ? err.response.data.message : err.message,
+          error.response ? error.response.data.message : error.message,
           "error"
         );
       }
