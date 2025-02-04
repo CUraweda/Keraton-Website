@@ -587,8 +587,8 @@ export default {
         );
         if (response.status != 200) throw Error(response.data.message);
         this.showNotif("Transaksi sukses", "success");
-        // this.cartClass.clearCart().updateItem();
-        // this.$router.replace("/user/transaction");
+        this.cartClass.clearCart().updateItem();
+        this.$router.replace("/user/transaction");
       } catch (err) {
         this.showNotif(
           err.response ? err.response.data.message : err.message,

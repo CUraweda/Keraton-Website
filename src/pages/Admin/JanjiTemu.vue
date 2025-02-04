@@ -219,7 +219,6 @@ export default {
   setup() {
     return {
       columns,
-      rows: ref([]),
     };
   },
   data() {
@@ -234,6 +233,7 @@ export default {
       idJadwal: ref(),
       dataListBook: ref([]),
       listBook: ref(false),
+      rows: [],
     };
   },
   async mounted() {
@@ -321,33 +321,42 @@ export default {
     async fetchData() {
       try {
         const response = await this.$api.get("/availability-time");
-        if (response.status != 200) throw Error("Error Occured");
-        console.log(response.data); // Check the fetched data
 
-        this.rows = response.data.data.map((content, i) => {
-          return {
-            nomor: i + 1,
-            id: content.id,
-            datetime:
-              "Tanggal " +
-              content.datetime.split("T")[0] +
-              " Pukul " +
-              content.datetime.split("T")[1].split(".")[0],
-            time: content.datetime,
-            booker_name: content.BookTimetable.map(
-              (item) => item.booker_name
-            ) || ["-"],
-            booker_email: content.BookTimetable.map(
-              (item) => item.booker_email
-            ) || ["-"],
-            booker_phone: content.BookTimetable.map(
-              (item) => item.booker_phone
-            ) || ["-"],
-            in_use: content.in_use ? "Ya" : "Tidak",
-          };
-        });
+        if (response.data && response.data.data) {
+          const mappedData = response.data.data.map((content, i) => {
+            const datetimeParts = content.datetime
+              ? content.datetime.split("T")
+              : ["", ""];
+            const datePart = datetimeParts[0] || "Tanggal tidak tersedia";
+            const timePart = datetimeParts[1]
+              ? datetimeParts[1].split(".")[0]
+              : "Waktu tidak tersedia";
+
+            return {
+              nomor: i + 1,
+              id: content.id,
+              datetime: `Tanggal ${datePart} Pukul ${timePart}`,
+              time: content.datetime,
+              booker_name:
+                content.BookTimetable?.map((item) => item.booker_name).join(
+                  ", "
+                ) || "-",
+              booker_email:
+                content.BookTimetable?.map((item) => item.booker_email).join(
+                  ", "
+                ) || "-",
+              booker_phone:
+                content.BookTimetable?.map((item) => item.booker_phone).join(
+                  ", "
+                ) || "-",
+              in_use: content.in_use ? "Ya" : "Tidak",
+            };
+          });
+
+          this.rows = mappedData;
+        }
       } catch (err) {
-        console.log(err);
+        console.error("Error fetching data:", err);
       }
     },
 
