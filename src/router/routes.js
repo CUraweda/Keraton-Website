@@ -29,12 +29,18 @@ import DetailBerita from "../pages/DetailBerita.vue";
 import Berita from "../pages/AllNews.vue";
 import VoucherPage from "../pages/Admin/VoucherPage.vue";
 import MuseumAi from "../pages/MuseumAi.vue";
+import TiketPage from "../pages/TiketPage.vue";
 
 const router = [
   {
     path: "/agungdalem",
     name: "AgungDalem",
     component: Agng,
+  },
+  {
+    path: "/booking",
+    name: "TiketPage",
+    component: TiketPage,
   },
   {
     path: "/wisata/museumai",
@@ -210,7 +216,7 @@ const router = [
     component: EventPage,
   },
   {
-    path: "/booking",
+    path: "/booking/paket",
     name: "booking",
     component: BookingPage,
   },

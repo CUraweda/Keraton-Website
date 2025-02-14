@@ -204,15 +204,6 @@
                   style="width: 15rem"
                   mask="AAAAAAAAAAAAAAAA"
                 />
-
-                <q-select
-                  v-model="diskon"
-                  :options="diskonOption"
-                  dense
-                  outlined
-                  label="Sistem Pembayaran"
-                  class="q-mt-md"
-                />
               </div>
             </div>
 
@@ -399,11 +390,6 @@ export default {
       checkoutTotal: ref(0),
       totalTagihan: ref(0),
       kodeVoucher: ref(""),
-      diskon: ref(),
-      diskonOption: ref([
-        { value: 50, label: "Separuh" },
-        { value: 100, label: "Penuh" },
-      ]),
       instances: ref([
         {
           label: "Bank BJB",
@@ -577,7 +563,6 @@ export default {
             method: this.paymentMethod,
             plannedDate,
             discount_code: this.kodeVoucher,
-            pay_percentage: this.diskon.value,
           },
           {
             headers: {

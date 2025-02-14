@@ -56,7 +56,10 @@
               <q-menu>
                 <q-list>
                   <q-item clickable to="/booking">
-                    <q-item-section>Paket Keraton</q-item-section>
+                    <q-item-section>Tiket</q-item-section>
+                  </q-item>
+                  <q-item clickable to="/booking">
+                    <q-item-section>Tiket Paket</q-item-section>
                   </q-item>
                   <q-item clickable to="/booking/event">
                     <q-item-section>Tiket Event</q-item-section>
@@ -297,7 +300,10 @@
         <q-menu>
           <q-list>
             <q-item clickable to="/booking">
-              <q-item-section>Paket Keraton</q-item-section>
+              <q-item-section>Tiket</q-item-section>
+            </q-item>
+            <q-item clickable to="/booking/paket">
+              <q-item-section>Tiket Paket</q-item-section>
             </q-item>
             <q-item clickable to="/booking/event">
               <q-item-section>Tiket Event</q-item-section>
