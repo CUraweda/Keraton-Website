@@ -305,10 +305,6 @@
                       @click="payWith(instance)"
                     >
                       <div class="flex items-center q-gutter-md">
-                        <img
-                          :src="instance.icon"
-                          style="width: 4rem; height: 2rem"
-                        />
                         <div>{{ instance.label }}</div>
                       </div>
                     </div>
@@ -316,6 +312,29 @@
                 </q-card-section>
               </q-card>
             </q-expansion-item>
+          </q-list>
+        </q-card-section>
+
+        <q-card-section>
+          <q-list bordered class="rounded-borders">
+            <q-item
+              clickable
+              v-ripple
+              class="q-mb-sm"
+              @click="payWithQris('QRIS')"
+            >
+              <q-item-section>
+                <q-item-label class="text-subtitle1"
+                  >Bayar dengan QRIS</q-item-label
+                >
+                <!-- <q-item-label caption
+                  >Pindai kode QR untuk pembayaran cepat</q-item-label
+                > -->
+              </q-item-section>
+              <q-item-section side>
+                <q-btn flat round icon="mdi-chevron-right" color="primary" />
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-card-section>
       </q-card>
@@ -332,10 +351,6 @@ import socket from "src/socket";
 import navbar from "../components/NavbarNew.vue";
 import SimpleNotify from "simple-notify";
 import "simple-notify/dist/simple-notify.css";
-import logobjb from "../assets/svg/logo_bjb.svg";
-import logobca from "../assets/svg/logo_bca.svg";
-import logomandiri from "../assets/svg/logo_mandiri.svg";
-import logobni from "../assets/svg/logo_bni.svg";
 import globalParams from "../stores/globalParam";
 
 export default {
@@ -392,24 +407,36 @@ export default {
       kodeVoucher: ref(""),
       instances: ref([
         {
-          label: "Bank BJB",
-          value: "BJB",
-          icon: [logobjb],
+          label: "MaybankVa",
+          value: "MAYBANKVA",
         },
         {
-          label: "Bank BCA",
-          value: "BCA",
-          icon: [logobca],
+          label: "BRIVA",
+          value: "BRIVA",
         },
         {
-          label: "Bank Mandiri",
-          value: "MANDIRI",
-          icon: [logomandiri],
+          label: "BNCVA",
+          value: "BNCVA",
         },
         {
-          label: "Bank BNI",
-          value: "BNI",
-          icon: [logobni],
+          label: "MandiriVA",
+          value: "MANDIRIVA",
+        },
+        {
+          label: "PermataVA",
+          value: "PERMATAVA",
+        },
+        {
+          label: "DanamonVA",
+          value: "DANAMONVA",
+        },
+        {
+          label: "MuamalatVA",
+          value: "MUAMALATVA",
+        },
+        {
+          label: "BSIVA",
+          value: "BSIVA",
         },
       ]),
     };
@@ -600,6 +627,10 @@ export default {
     },
     payWith(indicator) {
       this.paymentMethod = indicator.value;
+      this.caraPembayaran = false;
+    },
+    payWithQris(indicator) {
+      this.paymentMethod = indicator;
       this.caraPembayaran = false;
     },
   },

@@ -31,14 +31,14 @@
             <div class="header">
               <q-breadcrumbs active-color="black">
                 <q-breadcrumbs-el label="Booking" />
-                <q-breadcrumbs-el label="Tiket Event" />
+                <q-breadcrumbs-el label="Tiket" />
               </q-breadcrumbs>
 
-              <div class="text-h5 text-bold">Tiket Event Keraton</div>
+              <div class="text-h5 text-bold">Tiket Keraton</div>
             </div>
           </div>
 
-          <div class="style-select">
+          <!-- <div class="style-select">
             <q-btn
               outlined
               label="Pelaksanaan"
@@ -82,10 +82,10 @@
                 </q-list>
               </q-menu>
             </q-btn>
-          </div>
+          </div> -->
 
-          <div class="flex justify-center items-center q-gutter-md">
-            <div v-for="(item, index) in events" :key="index">
+          <div class="flex justify-center items-center q-gutter-md q-mt-md">
+            <div v-for="(item, index) in tiket" :key="index">
               <q-card class="my-card" flat bordered>
                 <q-img :src="item.image" class="image-card" />
 
@@ -164,20 +164,20 @@ export default {
   components: { navbar },
   data() {
     return {
-      jenisEvent: ref([]),
-      jenisPelaksanaan: ref([]),
-      jenisEventOptions: [
-        { label: "Gratis", value: 1 },
-        { label: "Bayar", value: 2 },
-      ],
-      pelaksanaanOptions: [
-        { label: "Perminggu", value: 1 },
-        { label: "Perbulan", value: 2 },
-        { label: "Pertahun", value: 3 },
-      ],
+      // jenisEvent: ref([]),
+      // jenisPelaksanaan: ref([]),
+      // jenisEventOptions: [
+      //   { label: "Gratis", value: 1 },
+      //   { label: "Bayar", value: 2 },
+      // ],
+      // pelaksanaanOptions: [
+      //   { label: "Perminggu", value: 1 },
+      //   { label: "Perbulan", value: 2 },
+      //   { label: "Pertahun", value: 3 },
+      // ],
       defaultImageUrl: "../assets/images/placeholder_image.jpg",
       cart: new Carts(),
-      events: ref([]),
+      tiket: ref([]),
       currentCartLength: 0,
       sessionData: ref(
         JSON.parse(decrypt(sessionStorage.getItem(env.GLOBAL_STORAGE)))
@@ -191,18 +191,18 @@ export default {
     this.fetchData();
     this.socketConnection();
   },
-  watch: {
-    jenisPelaksanaan: {
-      handler() {
-        this.fetchData();
-      },
-    },
-    jenisEvent: {
-      handler() {
-        this.fetchData();
-      },
-    },
-  },
+  // watch: {
+  //   jenisPelaksanaan: {
+  //     handler() {
+  //       this.fetchData();
+  //     },
+  //   },
+  //   jenisEvent: {
+  //     handler() {
+  //       this.fetchData();
+  //     },
+  //   },
+  // },
   methods: {
     socketConnection() {
       socket.connect();
@@ -226,7 +226,7 @@ export default {
     },
     async fetchData() {
       try {
-        const eventResponse = await this.$api.post("event/page", {
+        const eventResponse = await this.$api.get("items?type=1", {
           ...(this.jenisPelaksanaan &&
             this.jenisPelaksanaan.length > 0 && {
               iterat: this.jenisPelaksanaan,
@@ -240,19 +240,19 @@ export default {
         const iterationResponse = await this.$api.get("iteration");
         if (eventResponse.status != 200) throw Error("Error occured");
         if (iterationResponse.status != 200) throw Error("Error occured");
-        this.events = eventResponse.data.data.map((event) => ({
+        this.tiket = eventResponse.data.data.map((event) => ({
           id: event.id,
           image: event.image,
-          buttonText1: event.iteration.name,
+          buttonText1: event.name,
           titleMedium: event.desc,
           titleBig: event.name,
           isFree: event.isFree,
           price: event.price,
         }));
-        this.options = iterationResponse.data.data.map((iterat) => ({
-          label: iterat.name,
-          value: iterat.id,
-        }));
+        // this.options = iterationResponse.data.data.map((iterat) => ({
+        //   label: iterat.name,
+        //   value: iterat.id,
+        // }));
         if (this.sessionData?.isLogin) {
           const cart = Object.values(this.cart.getItem());
           this.currentCartLength = cart.length;
@@ -275,7 +275,7 @@ export default {
           quantity: 1,
           categoryId: rowData.categoryId,
           price: rowData.price,
-          type: "E",
+          type: "T",
         };
         const cartData = this.cart.addManyItem([storedData]).getItem();
         if (!cartData) throw Error("Error Occured");

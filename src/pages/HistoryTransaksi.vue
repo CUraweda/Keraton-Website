@@ -193,7 +193,7 @@ const statusSelected = ref(false);
 
         <div class="flex items-center justify-between q-mt-md">
           <div>Biaya Layanan</div>
-          <div>{{ detailData.fee }}</div>
+          <div>{{ detailData.additionalFee }}</div>
         </div>
 
         <div class="flex items-center justify-between q-mt-md">
@@ -303,7 +303,7 @@ const statusSelected = ref(false);
 
             <div class="flex items-center justify-between q-mt-md">
               <div>Biaya Layanan</div>
-              <div>{{ detailData.fee }}</div>
+              <div>{{ detailData.additionalFee }}</div>
             </div>
 
             <div class="flex items-center justify-between q-mt-md">
@@ -482,6 +482,7 @@ export default {
           field: "price",
         },
       ],
+      fetchPayment: ref([]),
       user: JSON.parse(localStorage.getItem(env.USER_STORAGE_NAME)),
       caraBayar: false,
       detailDialog: ref(false),
@@ -502,6 +503,7 @@ export default {
   },
   mounted() {
     this.fetchData();
+    this.handleFetchPayment();
   },
   components: {
     Notification,
@@ -512,6 +514,32 @@ export default {
     "search.stat": "fetchData",
   },
   methods: {
+    async handleFetchPayment() {
+      try {
+        let endpointLink = "trans";
+
+        const response = await this.$api.get(endpointLink, {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        });
+
+        this.fetchPayment = [];
+
+        for (let transaction of response.data.data) {
+          this.rawHistoryDatas[transaction.id] = transaction.detailTrans;
+
+          this.fetchPayment.push({
+            ...this.simplifyDetail(transaction),
+          });
+        }
+
+        console.log("=================");
+        console.log(this.fetchPayment);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     showNotif(msg, status) {
       new SimpleNotify({
         text: `${msg}`,
