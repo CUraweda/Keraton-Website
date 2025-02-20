@@ -154,7 +154,7 @@ import Carts from "../stores/carts";
 import cookieHandler from "src/cookieHandler";
 import env from "stores/environment";
 import { ref } from "vue";
-import socket from 'src/socket'
+import socket from "src/socket";
 import navbar from "../components/NavbarNew.vue";
 import SimpleNotify from "simple-notify";
 import { decrypt } from "src/stores/encryption";
@@ -175,7 +175,7 @@ export default {
         { label: "Perbulan", value: 2 },
         { label: "Pertahun", value: 3 },
       ],
-      defaultImageUrl: '../assets/images/placeholder_image.jpg',
+      defaultImageUrl: "../assets/images/placeholder_image.jpg",
       cart: new Carts(),
       events: ref([]),
       currentCartLength: 0,
@@ -189,7 +189,7 @@ export default {
   },
   mounted() {
     this.fetchData();
-    this.socketConnection()
+    this.socketConnection();
   },
   watch: {
     jenisPelaksanaan: {
@@ -204,11 +204,11 @@ export default {
     },
   },
   methods: {
-    socketConnection(){
-      socket.connect()
-      socket.on('tiket', () => {
-        this.fetchData()
-      })
+    socketConnection() {
+      socket.connect();
+      socket.on("tiket", () => {
+        this.fetchData();
+      });
     },
     showNotif(msg, status) {
       const myNotify = new SimpleNotify({
@@ -279,7 +279,7 @@ export default {
         };
         const cartData = this.cart.addManyItem([storedData]).getItem();
         if (!cartData) throw Error("Error Occured");
-        this.currentCartLength = Object.values(cartData).length
+        this.currentCartLength = Object.values(cartData).length;
         this.showNotif(`${storedData.name} Dimasukan ke keranjang`, "success");
         return this.cart.updateItem();
       } catch (err) {

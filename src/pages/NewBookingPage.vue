@@ -228,7 +228,7 @@ export default {
     },
     async fetchData() {
       try {
-        const response = await this.$api.get("items?type=2");
+        const response = await this.$api.get("items/booking");
         if (response.status !== 200) throw Error("Error Occured");
         let tikets = [],
           pakets = {},

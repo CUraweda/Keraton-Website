@@ -753,8 +753,8 @@ export default {
           name: event.name,
           isFree: event.isFree,
           desc: event.desc,
-          // iteration: event.iteration.name,
-          // iterationId: event.iteration.id,
+          iteration: event.iteration.name,
+          iterationId: event.iteration.id,
         }));
         this.tiketPakets = tiketPaketReponse.data.data.map((tiket) => ({
           id: tiket.id,

@@ -58,7 +58,7 @@
                   <q-item clickable to="/booking">
                     <q-item-section>Tiket</q-item-section>
                   </q-item>
-                  <q-item clickable to="/booking">
+                  <q-item clickable to="/booking/paket">
                     <q-item-section>Tiket Paket</q-item-section>
                   </q-item>
                   <q-item clickable to="/booking/event">
