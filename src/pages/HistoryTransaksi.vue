@@ -112,7 +112,11 @@ const statusSelected = ref(false);
                     </div>
                     <div
                       class="cursor-pointer"
-                      @click="caraBayar = !caraBayar"
+                      @click="
+                        selectTransaction(
+                          transaction.detailDatas.data[0].idIndex
+                        )
+                      "
                       v-if="transaction.status === 'menungguPembayaran'"
                     >
                       Cara Bayar
@@ -339,127 +343,47 @@ const statusSelected = ref(false);
         <q-card-section>
           <div class="q-pa-md">
             <q-list bordered>
-              <q-expansion-item
-                group="somegroup"
-                label="BJB Virtual Account"
-                default-opened
-              >
-                <q-card>
-                  <q-card-section>
-                    <div class="flex justify-between">
-                      <div>
-                        <div>Nomor Virtual Account</div>
-                        <div>1892379812732189</div>
-                      </div>
-
-                      <q-btn flat>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="24px"
-                          viewBox="0 -960 960 960"
-                          width="24px"
-                          @click="salinNomor('1892379812732189')"
-                          fill="#DAA520"
-                        >
-                          <path
-                            d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
-                          />
-                        </svg>
-                      </q-btn>
-                    </div>
-
-                    <!-- <div class="flex q-mt-md justify-between">
-                      <div class="flex items-center">
-                        <q-icon name="mdi-help-circle" />
-                        <p class="text-caption text-grey q-ml-xs">
-                          Nomor Virtual Account adalah...
-                        </p>
-                      </div>
-                      <q-btn flat class="text-red">Salin</q-btn>
-                    </div> -->
-                  </q-card-section>
-                </q-card>
-              </q-expansion-item>
-
-              <q-expansion-item group="somegroup" label="Bank Mandiri">
-                <q-card>
-                  <q-card-section>
-                    <div class="flex justify-between">
-                      <div>
-                        <div>Nomor Virtual Account</div>
-                        <div>1892379812732189</div>
-                      </div>
-
-                      <q-btn flat>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="24px"
-                          viewBox="0 -960 960 960"
-                          width="24px"
-                          @click="salinNomor('1892379812732189')"
-                          fill="#DAA520"
-                        >
-                          <path
-                            d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
-                          />
-                        </svg>
-                      </q-btn>
-                    </div>
-
-                    <!-- <div class="flex q-mt-md justify-between">
-                      <div class="flex items-center">
-                        <q-icon name="mdi-help-circle" />
-                        <p class="text-caption text-grey q-ml-xs">
-                          Nomor Virtual Account adalah...
-                        </p>
-                      </div>
-                      <q-btn flat class="text-red">Salin</q-btn>
-                    </div> -->
-                  </q-card-section>
-                </q-card>
-              </q-expansion-item>
-
-              <q-expansion-item
-                group="somegroup"
-                label="Bank Permata"
-                :default-opened="false"
-              >
-                <q-card>
-                  <q-card-section>
-                    <div class="flex justify-between">
-                      <div>
-                        <div>Nomor Virtual Account</div>
-                        <div>1892379812732189</div>
-                      </div>
-
-                      <q-btn flat>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="24px"
-                          viewBox="0 -960 960 960"
-                          width="24px"
-                          @click="salinNomor('1892379812732189')"
-                          fill="#DAA520"
-                        >
-                          <path
-                            d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
-                          />
-                        </svg>
-                      </q-btn>
-                    </div>
-
-                    <!-- <div class="flex q-mt-md justify-between">
-                      <div class="flex items-center">
-                        <q-icon name="mdi-help-circle" />
-                        <p class="text-caption text-grey q-ml-xs">
-                          Nomor Virtual Account adalah...
-                        </p>
-                      </div>
-                      <q-btn flat class="text-red">Salin</q-btn>
-                    </div> -->
-                  </q-card-section>
-                </q-card>
-              </q-expansion-item>
+              <q-item clickable v-if="selectedTransaction">
+                <q-item-section>
+                  <q-item-label> </q-item-label>
+                  <q-item-label caption>
+                    <template v-if="selectedTransaction[0]?.virtualAccountNo">
+                      <div>{{ selectedTransaction[0]?.method }}</div>
+                      <div>{{ selectedTransaction[0]?.virtualAccountNo }}</div>
+                    </template>
+                    <template v-else-if="selectedTransaction[0]?.qrisLink">
+                      <div>{{ selectedTransaction[0]?.method }}</div>
+                      <img
+                        :src="selectedTransaction[0]?.qrisLink"
+                        alt="QRIS"
+                        style="max-width: 200px"
+                      />
+                    </template>
+                    <template v-else> Tidak tersedia </template>
+                  </q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                  <q-btn flat>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      @click="
+                        salinNomor(
+                          selectedTransaction.virtualAccountNo ||
+                            selectedTransaction.qrisLink
+                        )
+                      "
+                      fill="#DAA520"
+                    >
+                      <path
+                        d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
+                      />
+                    </svg>
+                  </q-btn>
+                </q-item-section>
+              </q-item>
             </q-list>
           </div>
         </q-card-section>
@@ -482,7 +406,6 @@ export default {
           field: "price",
         },
       ],
-      fetchPayment: ref([]),
       user: JSON.parse(localStorage.getItem(env.USER_STORAGE_NAME)),
       caraBayar: false,
       detailDialog: ref(false),
@@ -499,11 +422,11 @@ export default {
         message: "",
         type: "info",
       },
+      selectedTransaction: null,
     };
   },
   mounted() {
     this.fetchData();
-    this.handleFetchPayment();
   },
   components: {
     Notification,
@@ -514,30 +437,37 @@ export default {
     "search.stat": "fetchData",
   },
   methods: {
-    async handleFetchPayment() {
-      try {
-        let endpointLink = "trans";
+    async selectTransaction(detailId) {
+      this.caraBayar = true;
 
-        const response = await this.$api.get(endpointLink, {
+      try {
+        // Lakukan request ke API
+        const response = await this.$api.get("trans", {
           headers: {
             Authorization: `Bearer ${this.token}`,
           },
         });
 
-        this.fetchPayment = [];
+        // Cek status response
+        if (response.status !== 200) throw Error(response.data.message);
 
-        for (let transaction of response.data.data) {
-          this.rawHistoryDatas[transaction.id] = transaction.detailTrans;
+        // Gunakan flatMap() untuk meratakan array dan memetakan data
+        const mappedData = response.data.data.flatMap((transaction) =>
+          transaction.detailTrans.map((detail) => ({
+            id: detail.id,
+            detailId: detail.id,
+            transactionId: transaction.id,
+            method: transaction.method,
+            virtualAccountNo: transaction.virtualAccountNo || null,
+            qrisLink: transaction.qrisLink || null,
+          }))
+        );
 
-          this.fetchPayment.push({
-            ...this.simplifyDetail(transaction),
-          });
-        }
-
-        console.log("=================");
-        console.log(this.fetchPayment);
+        // Filter data berdasarkan detailId
+        this.selectedTransaction =
+          mappedData.filter((detail) => detail.detailId === detailId) || [];
       } catch (error) {
-        console.log(error);
+        console.error("Error saat mengambil transaksi:", error.message);
       }
     },
     showNotif(msg, status) {
@@ -617,6 +547,7 @@ export default {
           this.historyDatas.push({
             ...this.simplifyDetail(transaction.detailTrans),
             ...this.simplifyStatus(transaction.status),
+            id: transaction.id,
             date: planDate,
             total: transaction.total,
             raw: transaction,
@@ -628,7 +559,6 @@ export default {
             // ]
           });
         }
-        console.log(this.historyDatas);
       } catch (err) {
         console.log(err);
       }
@@ -702,6 +632,7 @@ export default {
       };
       for (let detailData of detail) {
         let contentToPush = {};
+        contentToPush["idIndex"] = detailData.id;
         if (detailData.order) {
           const orderData = detailData.order;
           contentToPush["price"] = this.formatRupiah(orderData.price);
