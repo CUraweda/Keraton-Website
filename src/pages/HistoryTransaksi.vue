@@ -512,12 +512,13 @@ export default {
           `${environment.BASE_URL}/payment/generate/${transactionId}`,
           {
             method: `POST`,
-          },
-          {
-            body: {
-              paymentType: "QRIS", //! Change this into dynamic
+            headers: {
+              'Content-Type': 'application/json'
             },
-          }
+            body: JSON.stringify({
+              paymentType: "QRIS"
+            })
+          },
         );
         const resData = await response.json();
         this.selectedTransaction = [
