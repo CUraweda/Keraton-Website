@@ -387,7 +387,7 @@ const statusSelected = ref(false);
 </template>
 
 <script>
-const environmentData = require('../stores/environment')
+import environmentData from "../stores/environment";
 
 export default {
   components: { navbar },
@@ -458,7 +458,7 @@ export default {
             qrisLink: transaction.qrisLink || null,
           }))
         );
-        
+
         // Filter data berdasarkan detailId
         this.selectedTransaction =
           mappedData.filter((detail) => detail.detailId === detailId) || [];
@@ -498,21 +498,26 @@ export default {
         });
     },
     async regenerate(transactionId) {
-      try{
-        const response = await fetch(`${environmentData.default.BASE_URL}/payment/generate/${transactionId}`, {
-          body: {
-            paymentType: "QRIS" //! Change this into dynamic
+      try {
+        const response = await fetch(
+          `${environmentData.default.BASE_URL}/payment/generate/${transactionId}`,
+          {
+            body: {
+              paymentType: "QRIS", //! Change this into dynamic
+            },
           }
-        })
-        const resData = await response.json()
-        this.selectedTransaction = [{
-          transactionId: resData.data.id,
-          method: resData.data.method,
-          virtualAccountNo: resData.data.virtualAccountNo || null,
-          qrisLink: resData.data.qrisLink || null
-        }]
-      }catch(e){
-        console.log(e)
+        );
+        const resData = await response.json();
+        this.selectedTransaction = [
+          {
+            transactionId: resData.data.id,
+            method: resData.data.method,
+            virtualAccountNo: resData.data.virtualAccountNo || null,
+            qrisLink: resData.data.qrisLink || null,
+          },
+        ];
+      } catch (e) {
+        console.log(e);
       }
     },
     async fetchData() {
