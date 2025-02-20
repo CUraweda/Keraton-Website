@@ -338,6 +338,8 @@ export default {
     },
 
     addToCart(rowData) {
+      console.log(rowData);
+
       try {
         const tokenExist = cookieHandler.getCookie(env.TOKEN_STORAGE_NAME);
         if (!tokenExist) {
@@ -354,6 +356,8 @@ export default {
           price: rowData.price,
           type: "T",
         };
+
+        console.log(rowData);
 
         const useTempCart = rowData.is_janji;
         const cartData = !useTempCart

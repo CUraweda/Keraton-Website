@@ -347,12 +347,15 @@ const statusSelected = ref(false);
                 <q-item-section>
                   <q-item-label> </q-item-label>
                   <q-item-label caption>
-                    <template v-if="selectedTransaction[0]?.virtualAccountNo">
+                    <template v-if="selectedTransaction[0]?.method != 'QRIS'">
                       <div>{{ selectedTransaction[0]?.method }}</div>
                       <div>{{ selectedTransaction[0]?.virtualAccountNo }}</div>
                     </template>
-                    <template v-else-if="selectedTransaction[0]?.qrisLink">
+                    <template
+                      v-else-if="selectedTransaction[0]?.method == 'QRIS'"
+                    >
                       <div>{{ selectedTransaction[0]?.method }}</div>
+
                       <img
                         :src="selectedTransaction[0]?.qrisLink"
                         alt="QRIS"
@@ -363,7 +366,10 @@ const statusSelected = ref(false);
                   </q-item-label>
                 </q-item-section>
                 <q-item-section side>
-                  <q-btn flat @click="regenerate()">
+                  <q-btn
+                    flat
+                    @click="regenerate(selectedTransaction[0]?.transactionId)"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="24px"
@@ -389,6 +395,9 @@ const statusSelected = ref(false);
 <script>
 import environmentData from "../stores/environment";
 
+const environment = environmentData;
+
+console.log(environment);
 export default {
   components: { navbar },
   data() {
@@ -500,7 +509,10 @@ export default {
     async regenerate(transactionId) {
       try {
         const response = await fetch(
-          `${environmentData.default.BASE_URL}/payment/generate/${transactionId}`,
+          `${environment.BASE_URL}/payment/generate/${transactionId}`,
+          {
+            method: `POST`,
+          },
           {
             body: {
               paymentType: "QRIS", //! Change this into dynamic
