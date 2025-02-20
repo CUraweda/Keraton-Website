@@ -159,6 +159,9 @@ import navbar from "../components/NavbarNew.vue";
 import SimpleNotify from "simple-notify";
 import { decrypt } from "src/stores/encryption";
 import "simple-notify/dist/simple-notify.css";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 export default {
   components: { navbar },
@@ -288,7 +291,7 @@ export default {
         if (!cartData) throw Error("Error Occured");
         if (!useTempCart) {
           this.currentCartLength = Object.values(cartData).length;
-        } else this.$router.push("/user/information/janji-temu");
+        } else router.push("/user/information/janji-temu");
         this.showNotif(`${storedData.name} Dimasukan ke keranjang`, "success");
         return !useTempCart
           ? this.cart.updateItem()
