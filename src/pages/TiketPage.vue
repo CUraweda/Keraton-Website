@@ -226,7 +226,7 @@ export default {
     },
     async fetchData() {
       try {
-        const eventResponse = await this.$api.get("items?type=1", {
+        const eventResponse = await this.$api.get("items?type=2", {
           ...(this.jenisPelaksanaan &&
             this.jenisPelaksanaan.length > 0 && {
               iterat: this.jenisPelaksanaan,
