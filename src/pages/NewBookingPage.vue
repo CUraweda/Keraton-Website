@@ -247,6 +247,7 @@ export default {
           id: event.id,
           image: event.image,
           buttonText1: event.name,
+          is_janji: event.is_janji,
           titleMedium: event.desc,
           titleBig: event.name,
           isFree: event.isFree,
@@ -285,6 +286,8 @@ export default {
         console.log(rowData);
 
         const useTempCart = rowData.is_janji;
+        console.log("useTempCart:", useTempCart);
+
         const cartData = !useTempCart
           ? this.cart.addManyItem([storedData]).getItem()
           : this.cart.setTempNew([storedData, ...this.janjiDefaultItems]);
