@@ -90,7 +90,7 @@
         flex-direction: column;
       "
     >
-      <div class="text-h2 text-center text-center text-white q-mt-xl">
+      <div class="text-h2 text-center text-white q-mt-xl">
         Top <span class="text-bold">Tourist</span> Attraction
       </div>
 

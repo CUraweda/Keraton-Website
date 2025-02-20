@@ -363,22 +363,16 @@ const statusSelected = ref(false);
                   </q-item-label>
                 </q-item-section>
                 <q-item-section side>
-                  <q-btn flat>
+                  <q-btn flat @click="regenerate()">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="24px"
                       viewBox="0 -960 960 960"
                       width="24px"
-                      @click="
-                        salinNomor(
-                          selectedTransaction.virtualAccountNo ||
-                            selectedTransaction.qrisLink
-                        )
-                      "
-                      fill="#DAA520"
+                      fill="#daa520"
                     >
                       <path
-                        d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
+                        d="M480-280q-73 0-127.5-45.5T284-440h62q13 44 49.5 72t84.5 28q58 0 99-41t41-99q0-58-41-99t-99-41q-29 0-54 10.5T382-580h58v60H280v-160h60v57q27-26 63-41.5t77-15.5q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-120q-33 0-56.5-23.5T120-200v-160h80v160h160v80H200Zm400 0v-80h160v-160h80v160q0 33-23.5 56.5T760-120H600ZM120-600v-160q0-33 23.5-56.5T200-840h160v80H200v160h-80Zm640 0v-160H600v-80h160q33 0 56.5 23.5T840-760v160h-80Z"
                       />
                     </svg>
                   </q-btn>
@@ -501,14 +495,10 @@ export default {
           window.open(pdfObj.output("bloburl"));
         });
     },
-    salinNomor(payload) {
-      try {
-        navigator.clipboard.writeText(payload).then(() => {
-          this.showNotif("Nomor Virtual telah disalin", "success");
-        });
-      } catch (err) {
-        console.log(err);
-      }
+    regenerate() {
+      this.fetchData();
+      this.selectTransaction();
+      window.location.reload();
     },
     async fetchData() {
       try {
