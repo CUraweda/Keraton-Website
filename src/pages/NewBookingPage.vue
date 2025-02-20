@@ -31,30 +31,71 @@
             <div class="header">
               <q-breadcrumbs active-color="black">
                 <q-breadcrumbs-el label="Booking" />
-                <q-breadcrumbs-el label="Paket Keraton" />
+                <q-breadcrumbs-el label="Tiket" />
               </q-breadcrumbs>
 
-              <div class="text-h5 text-bold">Paket Keraton</div>
+              <div class="text-h5 text-bold">Tiket Keraton</div>
             </div>
           </div>
 
-          <div class="text-h5 text-bold q-mx-md q-my-md">
-            Tiket Masuk Keraton & Bundling
-          </div>
-          <div
-            class="flex q-gutter-md q-mx-md"
-            style="
-              overflow-x: auto;
-              flex-wrap: nowrap;
-              -ms-overflow-style: none;
-              scrollbar-width: none;
-            "
-          >
-            <div v-for="(item, index) in tiketItems" :key="index">
+          <!-- <div class="style-select">
+            <q-btn
+              outlined
+              label="Pelaksanaan"
+              no-caps
+              icon-right="keyboard_arrow_down"
+            >
+              <q-menu>
+                <q-list>
+                  <q-item clickable>
+                    <q-item-section>
+                      <q-checkbox
+                        v-for="(iterat, i) in pelaksanaanOptions"
+                        :key="i"
+                        v-model="jenisPelaksanaan"
+                        :val="iterat.value"
+                        :label="iterat.label"
+                    /></q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
+
+            <q-btn
+              outlined
+              label="Jenis Event"
+              no-caps
+              icon-right="keyboard_arrow_down"
+            >
+              <q-menu>
+                <q-list>
+                  <q-item clickable>
+                    <q-item-section>
+                      <q-checkbox
+                        v-for="(type, i) in jenisEventOptions"
+                        :key="i"
+                        v-model="jenisEvent"
+                        :val="type.value"
+                        :label="type.label"
+                    /></q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
+          </div> -->
+
+          <div class="flex justify-center items-center q-gutter-md q-mt-md">
+            <div v-for="(item, index) in tiket" :key="index">
               <q-card class="my-card" flat bordered>
                 <q-img :src="item.image" class="image-card" />
 
                 <q-card-section>
+                  <div class="flex q-gutter-sm">
+                    <q-badge color="blue">{{ item.buttonText1 }}</q-badge>
+                    <q-badge color="blue">{{
+                      item.isFree ? "Free" : "Paid"
+                    }}</q-badge>
+                  </div>
                   <div
                     class="text-h6 q-mt-sm q-mb-xs"
                     style="
@@ -79,12 +120,16 @@
 
                 <q-card-actions>
                   <div class="text-subtitle1 text-weight-medium">
-                    {{ formatRupiah(item.price) }}
+                    {{
+                      item.price < 1
+                        ? "Free"
+                        : "Rp. " + formatRupiah(item.price)
+                    }}
                   </div>
                   <q-space />
                   <q-btn
-                    @click="addToCart(item)"
                     dense
+                    @click="addToCart(item)"
                     no-caps
                     style="background: #fae084"
                     ><span class="text-bold">Tambah</span
@@ -96,73 +141,6 @@
                   ></q-btn>
                 </q-card-actions>
               </q-card>
-            </div>
-          </div>
-
-          <div v-for="(item, index) in paketItems" :key="index">
-            <div class="text-h5 text-bold q-mx-md q-my-md">
-              {{
-                paketNameItems[index].name +
-                ` (minimal ${paketNameItems[index].minimumUnit} orang)`
-              }}
-            </div>
-            <div
-              class="flex q-gutter-md q-mx-md"
-              style="
-                overflow-x: auto;
-                flex-wrap: nowrap;
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-              "
-            >
-              <div v-for="(data, index) in item" :key="index">
-                <q-card class="my-card" flat bordered>
-                  <q-img :src="data.image" class="image-card" />
-
-                  <q-card-section>
-                    <div
-                      class="text-h6 q-mt-sm q-mb-xs"
-                      style="
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                      "
-                    >
-                      {{ data.titleBig }}
-                    </div>
-                    <div
-                      class="text-caption text-grey"
-                      style="
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                      "
-                    >
-                      {{ data.titleMedium }}
-                    </div>
-                  </q-card-section>
-
-                  <q-card-actions>
-                    <div class="text-subtitle1 text-weight-medium">
-                      {{ formatRupiah(data.price) }}
-                    </div>
-                    <q-space />
-                    <q-btn
-                      @click="addToCart(data)"
-                      dense
-                      no-caps
-                      style="background: #fae084"
-                      class="text-bold"
-                      ><span class="text-bold">Tambah</span
-                      ><span
-                        ><q-img
-                          src="../assets/Frame.svg"
-                          style="width: 1rem; height: 1rem"
-                          class="q-mx-xs" /></span
-                    ></q-btn>
-                  </q-card-actions>
-                </q-card>
-              </div>
             </div>
           </div>
         </div>
@@ -186,13 +164,20 @@ export default {
   components: { navbar },
   data() {
     return {
-      tiketItems: ref(),
-      paketItems: ref(),
-      janjiDefaultItems: ref(),
-      paketNameItems: ref(),
-      // PaketAutomated: ref([]),
-      defaultImageUrl: "src/assets/images/placeholder_image.jpg",
+      // jenisEvent: ref([]),
+      // jenisPelaksanaan: ref([]),
+      // jenisEventOptions: [
+      //   { label: "Gratis", value: 1 },
+      //   { label: "Bayar", value: 2 },
+      // ],
+      // pelaksanaanOptions: [
+      //   { label: "Perminggu", value: 1 },
+      //   { label: "Perbulan", value: 2 },
+      //   { label: "Pertahun", value: 3 },
+      // ],
+      defaultImageUrl: "../assets/images/placeholder_image.jpg",
       cart: new Carts(),
+      tiket: ref([]),
       currentCartLength: 0,
       sessionData: ref(
         JSON.parse(decrypt(sessionStorage.getItem(env.GLOBAL_STORAGE)))
@@ -206,6 +191,18 @@ export default {
     this.fetchData();
     this.socketConnection();
   },
+  // watch: {
+  //   jenisPelaksanaan: {
+  //     handler() {
+  //       this.fetchData();
+  //     },
+  //   },
+  //   jenisEvent: {
+  //     handler() {
+  //       this.fetchData();
+  //     },
+  //   },
+  // },
   methods: {
     socketConnection() {
       socket.connect();
@@ -221,92 +218,41 @@ export default {
       });
       setTimeout(() => {
         myNotify.close();
-      }, 3000);
+      }, 5000);
     },
+
     async storeCartToDatabase() {
       this.cart.updateToDB();
     },
     async fetchData() {
       try {
-        const response = await this.$api.get("items/booking");
-        if (response.status !== 200) throw Error("Error Occured");
-        let tikets = [],
-          pakets = {},
-          defaultJanji = [];
-
-        for (let subType of response.data.data) {
-          let subTypeName = `${subType.name}|${
-            subType.minimumUnits ? subType.minimumUnits : 0
-          }`;
-          if (subType.orders.length < 1) continue;
-          switch (subType.orderTypeId) {
-            case 1: //Tiket Type
-              for (let order of subType.orders) {
-                const payloadData = {
-                  id: order.id,
-                  categoryId: order.categoryId,
-                  image: order.image,
-                  titleMedium: order.desc,
-                  titleBig: order.name,
-                  subType: subType.orderTypeId,
-                  quantity: 0,
-                  price: order.price,
-                  unit: order.units,
-                  is_janji: order.is_janji,
-                };
-                tikets.push(payloadData);
-                if (order.needed_for_janji)
-                  defaultJanji.push({
-                    id: order.id,
-                    name: order.name,
-                    image: order.image,
-                    quantity: 1,
-                    categoryId: order.categoryId,
-                    minimumUnit: subType.minimumUnit,
-                    price: order.price,
-                    type: "T",
-                  });
-              }
-              break;
-            case (2, 4, 3):
-              if (!pakets[subTypeName]) pakets[subTypeName] = [];
-
-              for (let order of subType.orders) {
-                const payloadData = {
-                  id: order.id,
-                  image: order.image,
-                  titleMedium: order.desc,
-                  categoryId: order.categoryId,
-                  titleBig: order.name,
-                  minimumUnit: subType.minimumUnits,
-                  quantity: 0,
-                  // price: order.price,s
-                  unit: order.units,
-                  is_janji: order.is_janji,
-                };
-                pakets[subTypeName].push(payloadData);
-                if (order.needed_for_janji)
-                  defaultJanji.push({
-                    id: order.id,
-                    name: order.name,
-                    image: order.image,
-                    quantity: 1,
-                    categoryId: order.categoryId,
-                    minimumUnit: subType.minimumUnit,
-                    price: order.price,
-                    type: "T",
-                  });
-              }
-              break;
-          }
-        }
-        this.tiketItems = tikets;
-        this.paketItems = Object.values(pakets);
-        this.janjiDefaultItems = defaultJanji;
-        this.paketNameItems = Object.keys(pakets).map((paket) => {
-          const [name, minimumUnit] = paket.split("|");
-          return { name, minimumUnit };
+        const eventResponse = await this.$api.get("items?type=2", {
+          ...(this.jenisPelaksanaan &&
+            this.jenisPelaksanaan.length > 0 && {
+              iterat: this.jenisPelaksanaan,
+            }),
+          ...(this.jenisEvent &&
+            this.jenisEvent.length < 2 &&
+            this.jenisEvent.length > 0 && {
+              free: this.jenisEvent[0] != 0 ? true : false,
+            }),
         });
+        const iterationResponse = await this.$api.get("iteration");
+        if (eventResponse.status != 200) throw Error("Error occured");
+        if (iterationResponse.status != 200) throw Error("Error occured");
+        this.tiket = eventResponse.data.data.map((event) => ({
+          id: event.id,
+          image: event.image,
+          buttonText1: event.name,
+          titleMedium: event.desc,
+          titleBig: event.name,
+          isFree: event.isFree,
+          price: event.price,
+        }));
+        // this.options = iterationResponse.data.data.map((iterat) => ({
+        //   label: iterat.name,
+        //   value: iterat.id,
+        // }));
         if (this.sessionData?.isLogin) {
           const cart = Object.values(this.cart.getItem());
           this.currentCartLength = cart.length;
@@ -315,36 +261,12 @@ export default {
         console.log(err);
       }
     },
-    getImageURL(image) {
-      if (image.startsWith("http")) {
-        return image;
-      } else {
-        return this.$api.get(`uploads/${image}`);
-      }
-    },
-    formatRupiah(price) {
-      if (isNaN(price) || price === null || price === undefined) {
-        return ""; // Tidak menampilkan apapun jika NaN atau tidak valid
-      }
-      if (price < 1) {
-        return "Free"; // Tampilkan "Free" jika price kurang dari 1
-      }
-      return (
-        "Rp. " +
-        (price / 1000).toLocaleString("en-US", {
-          minimumFractionDigits: 3,
-        })
-      );
-    },
-
     addToCart(rowData) {
-      console.log(rowData);
-
       try {
         const tokenExist = cookieHandler.getCookie(env.TOKEN_STORAGE_NAME);
         if (!tokenExist) {
           this.$router.push("/signin");
-          throw Error("Anda Masih belum Log In!");
+          throw Error("Anda masih belum login");
         }
         const storedData = {
           id: rowData.id,
@@ -352,29 +274,23 @@ export default {
           image: rowData.image,
           quantity: 1,
           categoryId: rowData.categoryId,
-          minimumUnit: rowData.minimumUnit,
           price: rowData.price,
           type: "T",
         };
-
-        console.log(rowData);
-
-        const useTempCart = rowData.is_janji;
-        const cartData = !useTempCart
-          ? this.cart.addManyItem([storedData]).getItem()
-          : this.cart.setTempNew([storedData, ...this.janjiDefaultItems]);
+        const cartData = this.cart.addManyItem([storedData]).getItem();
         if (!cartData) throw Error("Error Occured");
-        if (!useTempCart) {
-          this.currentCartLength = Object.values(cartData).length;
-        } else this.$router.push("/user/information/janji-temu");
+        this.currentCartLength = Object.values(cartData).length;
         this.showNotif(`${storedData.name} Dimasukan ke keranjang`, "success");
-        return !useTempCart
-          ? this.cart.updateItem()
-          : this.cart.updateTempItem();
+        return this.cart.updateItem();
       } catch (err) {
         this.showNotif(err.message, "error");
         console.log(err);
       }
+    },
+    formatRupiah(price) {
+      return (price / 1000).toLocaleString("en-US", {
+        minimumFractionDigits: 3,
+      });
     },
   },
 };
@@ -386,6 +302,17 @@ export default {
 
 * {
   font-family: Raleway;
+}
+
+.sn-notifications-container {
+  --sn-success-progress-color: black;
+}
+
+.style-select {
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  margin: 1rem 2rem;
 }
 
 .background-header {
@@ -414,14 +341,6 @@ export default {
 @media screen and (max-width: 1200px) {
   .header {
     margin: 1rem 1rem;
-  }
-
-  .image-card {
-    height: 10rem;
-  }
-
-  .my-card {
-    width: 15rem;
   }
 }
 </style>
