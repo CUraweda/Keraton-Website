@@ -245,6 +245,7 @@ export default {
           image: event.image,
           buttonText1: event.name,
           titleMedium: event.desc,
+          is_janji: event.is_janji,
           titleBig: event.name,
           isFree: event.isFree,
           price: event.price,
@@ -266,7 +267,7 @@ export default {
         const tokenExist = cookieHandler.getCookie(env.TOKEN_STORAGE_NAME);
         if (!tokenExist) {
           this.$router.push("/signin");
-          throw Error("Anda masih belum login");
+          throw Error("Anda Masih belum Log In!");
         }
         const storedData = {
           id: rowData.id,
@@ -274,14 +275,27 @@ export default {
           image: rowData.image,
           quantity: 1,
           categoryId: rowData.categoryId,
+          minimumUnit: rowData.minimumUnit,
           price: rowData.price,
           type: "T",
         };
-        const cartData = this.cart.addManyItem([storedData]).getItem();
+
+        console.log(rowData);
+
+        const useTempCart = rowData.is_janji;
+        console.log("useTempCart:", useTempCart);
+
+        const cartData = !useTempCart
+          ? this.cart.addManyItem([storedData]).getItem()
+          : this.cart.setTempNew([storedData, ...this.janjiDefaultItems]);
         if (!cartData) throw Error("Error Occured");
-        this.currentCartLength = Object.values(cartData).length;
+        if (!useTempCart) {
+          this.currentCartLength = Object.values(cartData).length;
+        } else router.push("/user/information/janji-temu");
         this.showNotif(`${storedData.name} Dimasukan ke keranjang`, "success");
-        return this.cart.updateItem();
+        return !useTempCart
+          ? this.cart.updateItem()
+          : this.cart.updateTempItem();
       } catch (err) {
         this.showNotif(err.message, "error");
         console.log(err);
