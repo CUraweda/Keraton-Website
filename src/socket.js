@@ -3,9 +3,9 @@ import io from "socket.io-client";
 const socket = io(
   // "https://api-prmn.curaweda.com:3031", //Production
   // "https://api-prmn.curaweda.com:3040", //Production
-  // "https://api-keraton.curaweda.com", //Production
+  "https://api-keraton.curaweda.com", //Production
   // "https://stg-keraton.curaweda.com", //Production
-  "http://localhost:3000", //Development
+  // "http://localhost:3000", //Development
   {
     transports: ["websocket"],
   }

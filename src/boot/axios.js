@@ -10,9 +10,9 @@ import axios from "axios";
 const api = axios.create({
   // baseURL: "https://api-prmn.curaweda.com:3031/keraton/",
   // baseURL: "https://api-prmn.curaweda.com:3040/keraton/",
-  // baseURL: "https://api-keraton.curaweda.com/keraton/",
+  baseURL: "https://api-keraton.curaweda.com/keraton/",
   // baseURL: "https://stg-keraton.curaweda.com/keraton/",
-  baseURL: "http://localhost:3000/keraton",
+  // baseURL: "http://localhost:3000/keraton",
 });
 
 // const api = axios.create({ baseURL: "http://localhost:3000/keraton/" });

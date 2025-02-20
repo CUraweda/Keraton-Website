@@ -9,9 +9,9 @@ export default {
   FRONTEND_URL: "http://localhost:9000",
   // FRONTEND_URL: "http://keraton.curaweda.com",
 
-  BASE_URL: "http://localhost:3000",
+  // BASE_URL: "http://localhost:3000",
   // BASE_URL: "https://api-prmn.curaweda.com:3040",
-  // BASE_URL: "https://api-keraton.curaweda.com",
+  BASE_URL: "https://api-keraton.curaweda.com",
   // BASE_URL: `https://api-prmn.curaweda.com:3031`,
   // BASE_URL: `https://stg-keraton.curaweda.com`,
 };
