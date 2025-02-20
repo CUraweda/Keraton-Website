@@ -319,6 +319,7 @@
               style="width: 10rem"
               @update:model-value="handleUploadEvent()"
             />
+            <div>Rasio: 16:9</div>
             <q-img :src="imgURLEvent" v-if="imgURLEvent" />
           </div>
         </q-card-section>
@@ -413,17 +414,20 @@
                 justify-content: space-between;
               "
             >
-              <q-file
-                filled
-                type="file"
-                v-model="tikets.image"
-                label="Tambahkan Image"
-                color="black"
-                class="ellipsis"
-                style="width: 10rem"
-                @update:model-value="handleUploadTiket()"
-              />
-              <q-img :src="imgURLTiket" v-if="imgURLTiket" />
+              <div>
+                <q-file
+                  filled
+                  type="file"
+                  v-model="tikets.image"
+                  label="Tambahkan Image"
+                  color="black"
+                  class="ellipsis"
+                  style="width: 10rem"
+                  @update:model-value="handleUploadTiket()"
+                />
+                <div>Rasio: 16:9</div>
+                <q-img :src="imgURLTiket" v-if="imgURLTiket" />
+              </div>
               <q-btn
                 no-caps
                 :label="currentId ? 'Update' : 'Create'"
