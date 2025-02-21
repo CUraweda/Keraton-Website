@@ -99,7 +99,7 @@ const statusSelected = ref(false);
                 <div>Total belanja</div>
                 <div class="flex items-center justify-between">
                   <div class="text-bold">
-                    Rp. {{ formatRupiah(transaction.paidTotal) }}
+                    {{ formatRupiah(transaction.detailDatas.data[0]?.price) }}
                   </div>
 
                   <div class="flex items-center q-gutter-md">
@@ -214,7 +214,7 @@ const statusSelected = ref(false);
 
         <div class="flex items-center justify-between q-mt-xl">
           <div class="text-bold">Total Biaya</div>
-          <div>{{ detailData.paidTotal }}</div>
+          <div>{{ detailData.total }}</div>
         </div>
 
         <div class="flex column justify-center items-center">
@@ -325,7 +325,7 @@ const statusSelected = ref(false);
 
             <div class="flex items-center justify-between q-mt-xl">
               <div>Total Biaya</div>
-              <div>{{ detailData.paidTotal }}</div>
+              <div>{{ detailData.total }}</div>
             </div>
           </div>
         </q-card-section>
@@ -513,12 +513,12 @@ export default {
           {
             method: `POST`,
             headers: {
-              'Content-Type': 'application/json'
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              paymentType: "QRIS"
-            })
-          },
+              paymentType: "QRIS",
+            }),
+          }
         );
         const resData = await response.json();
         this.selectedTransaction = [
@@ -713,8 +713,10 @@ export default {
     },
     formatRupiah(price) {
       if (price === 0) return "Free";
-      return (price / 1000).toLocaleString("en-US", {
-        minimumFractionDigits: 3,
+      return price.toLocaleString("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
       });
     },
     formatDate(date) {
