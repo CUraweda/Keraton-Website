@@ -712,8 +712,12 @@ export default {
       return dataToReturn;
     },
     formatRupiah(price) {
-      if (price === 0) return "Free";
-      return price.toLocaleString("id-ID", {
+      // Konversi ke Number dan cek NaN
+      const parsedPrice = Number(price);
+      if (isNaN(parsedPrice) || parsedPrice === 0) return "Free";
+
+      // Format Rupiah
+      return parsedPrice.toLocaleString("id-ID", {
         style: "currency",
         currency: "IDR",
         minimumFractionDigits: 0,
